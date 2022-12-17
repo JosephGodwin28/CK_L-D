@@ -48,6 +48,25 @@ class EmpController extends CI_Controller {
     public function emp_pending_list(){
         $this->load->view('user/emp_pending_listing');
     } 
+    /*Remark employee */
+    public function emp_remark()
+    {
+        $this->load->view('remark_page');
+    }
+    /*Report Remark employee */
+    public function report_remark_list()
+    {
+        $this->load->view('report_remark');
+    }
+    /*Assessment Report */
+    public function performance_list()
+    {
+        $this->load->view('performance_list');
+    }
+    public function performance_report_list()
+    {
+        $this->load->view('performance_report_list');
+    }
   
 
     public function get_trainee_list(){
@@ -359,6 +378,150 @@ class EmpController extends CI_Controller {
             echo json_encode($result);
         }
     }
+    public function get_batch_no()
+    {
+        $batch_no_list = $this->cmodel->get_batch_no('create_trainee','batch_code','id');
+        // print_r($this->db->last_query());die;
+        echo json_encode($batch_no_list);
+    }
+    public function get_trainee_code()
+    {
+        $data['batch_code'] =$this->input->post('batch_no');
+        // print_r($data);
+        $trainee_code_list = $this->cmodel->get_trainee_code('create_trainee','trainee_code',$data);
+        // print_r($this->db->last_query());die;
+        echo json_encode($trainee_code_list);
+    }
+    public function get_emp_remark_list()
+    {
+    if($this->input->post('trainee_code')!=''){
+        $postData=$this->input->post();
+        $postData_where =$this->input->post('trainee_code');
+        $get_emp_list = $this->emodel->get_emp_list($postData,$postData_where);
+        // print_r($this->db->last_query());die;
+        echo json_encode($get_emp_list);
+    }
+    }
+    public function addRemark()
+    {
+        if($this->input->post('remarks')!='')
+        {
+        $data['batch_code'] =$this->input->post('batch_code');
+        $data['trainee_code'] =$this->input->post('trainee_code');
+        $data['rag'] =$this->input->post('rag');
+        $data['remark'] =$this->input->post('remarks');
+        // print_r($data);
+        $trainee_code_list = $this->emodel->create_emp_remarks('table_emp_remark',$data);
+        if($trainee_code_list=="success"){
+            $result = array(
+                "response" => "success",
+                "url" => "EmpController/emp_remark"
+            );
+            echo json_encode($result);
+        }
+        else{
+            $result = array(
+                "response" => "failed",
+                "url" => "EmpController/emp_remark"
+            );
+            echo json_encode($result);
+        }
+    }
+    } 
+    public function get_report_remark_list()
+    {
+        $postData=$this->input->post();
+        $batch_no =$this->input->post('batch_no');
+        // echo $batch_no;
+        $trainee_code =$this->input->post('trainee_code');
+        // echo $trainee_code;
+        $get_emp_list = $this->emodel->get_report_remark_list($postData,$batch_no,$trainee_code);
+        // print_r($this->db->last_query());die;
+        // print_r($get_emp_list);die; 
+        echo json_encode($get_emp_list);
+    }
+    public function get_perform_employee()
+    {
+        $postData = $this->input->post();
+        $postData_where['batch_no'] =$this->input->post('batch_no');
+        $postData_where['level'] =$this->input->post('level');
+        $postData_where['attempt'] =$this->input->post('attempt');
+        // print_r($batch_no);die;
+        $get_perform_list = $this->emodel->get_perform_employee($postData,$postData_where);
+        // print_r($this->db->last_query());die;
+        // print_r($get_perform_list);die;
+        echo json_encode($get_perform_list);
 
+    }
+    public function add_emp_performance()
+    {
+    	// echo "<pre>";print_r($this->input->post()); die;
+
+        $postData['Batch_no']=$this->input->post('batch_no');
+        $postData['Level']=$this->input->post('level');
+        $postData['Attempt']=$this->input->post('attempt');
+        $postData['assign_chbox']=$this->input->post('assign_chbox');
+        $postData['mark']=$this->input->post('mark');
+        $postData['tot_mark']=$this->input->post('tot_mark');
+        $postData['status']=$this->input->post('status');
+        $postData['percentage']=$this->input->post('percentage');
+        // echo "<pre>";print_r($postData);
+        $add_perform_mark = $this->emodel->add_perform_mark($postData);
+        if($add_perform_mark=="success"){
+            $result = array(
+                "response" => "success",
+            );
+            echo json_encode($result);
+        }
+        else{
+            $result = array(
+                "response" => "failed",
+            );
+            echo json_encode($result);
+        }
+    }
+    public function get_performance_report_list()
+    {
+        // print_r($this->input->post());
+        $postData = $this->input->post();
+        $postData_where['Batch_code']=$this->input->post('batch_no');
+        $postData_where['Trainee_code']=$this->input->post('trainee_code');
+        // print_r($postData);
+        $get_report_list = $this->emodel->get_performance_report_list($postData,$postData_where);
+        // print_r($this->db->last_query());die;
+        // echo "<pre>";print_r($get_report_list);die;
+        echo json_encode($get_report_list);
+
+
+    }
+    public function fetch_remark_details()
+    {
+        $postData_where['trainee_code'] = $this->input->post('trainee_code');
+        $get_remark_details = $this->emodel->fetch_remark_details($postData_where);
+        // print_r($get_remark_details);
+        echo json_encode($get_remark_details);
+    }
+    public function update_remark()
+    {
+    //    echo "<pre>"; print_r($this->input->post());
+       $postData['Rag']=$this->input->post('edit_rag');
+       $postData['Remark']=$this->input->post('edit_remark');
+       $postData_where['trainee_code']=$this->input->post('edit_trainee_code');
+       $update_remark = $this->emodel->update_remark($postData,$postData_where);
+       if($update_remark=="success"){
+        $result = array(
+            "response" => "success",
+            "url" => "EmpController/report_remark_list"
+        );
+        echo json_encode($result);
+    }
+    else{
+        $result = array(
+            "response" => "failed",
+            "url" => "EmpController/report_remark_list"
+        );
+        echo json_encode($result);
+    }
+    }
 }
 ?>

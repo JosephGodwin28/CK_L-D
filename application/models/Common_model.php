@@ -40,7 +40,7 @@ class Common_model extends CI_Model{
 		$this->db->select('count(*) as allcount');
 		$this->db->from('create_trainee');
 		// $this->db->join('rs_keyperformance_name as kn','a.key_name=kn.id');
-  //       $this->db->where('a.created_by',$postData_where);
+  		// $this->db->where('a.created_by',$postData_where);
 
 		$records = $this->db->get()->result();
 
@@ -50,7 +50,7 @@ class Common_model extends CI_Model{
 		$this->db->select('count(*) as allcount');
 		$this->db->from('create_trainee');
 		// $this->db->join('rs_keyperformance_name as kn','a.key_name=kn.id');
-  //       $this->db->where('a.created_by',$postData_where);
+ 		// $this->db->where('a.created_by',$postData_where);
 		
 		if ($searchQuery != '') $this->db->where($searchQuery);
 		$records = $this->db->get()->result();
@@ -61,7 +61,7 @@ class Common_model extends CI_Model{
 		$this->db->select('*');
 		$this->db->from('create_trainee');
 		// $this->db->join('rs_keyperformance_name as kn','a.key_name=kn.id');
-  //       $this->db->where('a.created_by',$postData_where);
+ 		// $this->db->where('a.created_by',$postData_where);
 
 		if ($searchQuery != '') $this->db->where($searchQuery);
 		$this->db->order_by('id', 'desc');  // or desc
@@ -190,7 +190,7 @@ class Common_model extends CI_Model{
     }
 
     function assignEmp($form_data){
-    	//echo "<pre>";print_r($form_data); die;
+    	// echo "<pre>";print_r($form_data); die;
 
     	$id= explode(',',$form_data[0]['id']);
     	foreach ($form_data as $info_data){
@@ -302,6 +302,21 @@ class Common_model extends CI_Model{
 		$message = "success";
 		return $message;
 	}
-
+	function get_batch_no($table,$batch_code,$id)
+	{
+		// $this->db->select($id);
+		$this->db->select($batch_code);
+		$this->db->distinct();
+		$records=$this->db->get($table);
+		return $records->result();
+	}
+	function get_trainee_code($table,$trainee_code,$data)
+	{
+		$this->db->select(['name_trainee',$trainee_code]);
+		$this->db->where($data);
+		$records=$this->db->get($table);
+		return $records->result();
+	}
+	
 
 }

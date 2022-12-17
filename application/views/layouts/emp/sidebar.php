@@ -45,6 +45,15 @@
                <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Training Attendance">
                 <a href="javascript:;" class="nav-link" data-bs-toggle="pill" data-bs-target="#attendancereport"><ion-icon name="map-sharp"></ion-icon></a>
               </li>
+              <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Remark">
+                <a href="javascript:;" class="nav-link" data-bs-toggle="pill" data-bs-target="#remark"><ion-icon name="gift-sharp"></ion-icon></a>
+              </li>
+              <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Forms">
+                <a href="javascript:;" class="nav-link" data-bs-toggle="pill" data-bs-target="#forms"><ion-icon name="newspaper-sharp"></ion-icon></a>
+              </li>
+              <!-- <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Tables">
+                <a href="javascript:;" class="nav-link" data-bs-toggle="pill" data-bs-target="#tables"><ion-icon name="server-sharp"></ion-icon></a>
+              </li> -->
               <!-- <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Components">
                 <a href="javascript:;" class="nav-link" data-bs-toggle="pill" data-bs-target="#components"><ion-icon name="gift-sharp"></ion-icon></a>
               </li>
@@ -155,6 +164,50 @@
               </div>
             </div>
              
+            <div class="tab-pane fade" id="forms">
+              <div class="list-group list-group-flush">
+                <div class="list-group-item">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-0">Forms</h5>
+                  </div>
+                  <small class="mb-0">Some placeholder content</small>
+                </div>
+                <a href="<?php echo base_url();?>EmpController/performance_list" class="list-group-item d-flex align-items-center"><ion-icon name="document-outline"></ion-icon>Assessment Mark</a>
+                <a href="<?php echo base_url();?>EmpController/performance_report_list" class="list-group-item d-flex align-items-center"><ion-icon name="clipboard-outline"></ion-icon>Assessment Report</a>
+                <!-- <a href="form-layouts.html" class="list-group-item d-flex align-items-center"><ion-icon name="paper-plane-outline"></ion-icon>Form Layouts</a>
+                <a href="form-validations.html" class="list-group-item d-flex align-items-center"><ion-icon name="aperture-outline"></ion-icon>Form Validations</a>
+                <a href="form-file-upload.html" class="list-group-item d-flex align-items-center"><ion-icon name="cloud-upload-outline"></ion-icon>File Upload</a>
+                <a href="form-date-time-pickes.html" class="list-group-item d-flex align-items-center"><ion-icon name="calendar-outline"></ion-icon>Date Pickers</a>
+                <a href="form-select2.html" class="list-group-item d-flex align-items-center"><ion-icon name="easel-outline"></ion-icon>Select2</a> -->
+              </div>
+            </div>
+            <div class="tab-pane fade" id="remark">
+              <div class="list-group list-group-flush">
+                <div class="list-group-item">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-0">Remark employee</h5>
+                  </div>
+                  <small class="mb-0">Some placeholder content</small>
+                </div>
+                <a href="<?php echo base_url();?>EmpController/emp_remark" class="list-group-item d-flex align-items-center"><ion-icon name="grid-outline"></ion-icon>Remark Page</a>
+                <a href="<?php echo base_url();?>EmpController/report_remark_list" class="list-group-item d-flex align-items-center"><ion-icon name="grid-outline"></ion-icon>Report Page</a>
+                <!-- <a href="index2.html" class="list-group-item d-flex align-items-center"><ion-icon name="bar-chart-outline"></ion-icon>Analytics</a>
+                <a href="index3.html" class="list-group-item d-flex align-items-center"><ion-icon name="bag-check-outline"></ion-icon>eCommerce</a> -->
+              </div>
+            </div>
+            <div class="tab-pane fade" id="tables">
+              <div class="list-group list-group-flush">
+                <div class="list-group-item">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-0">Tables</h5>
+                  </div>
+                  <small class="mb-0">Some placeholder content</small>
+                </div>
+                <a href="table-basic-table.html" class="list-group-item d-flex align-items-center"><ion-icon name="file-tray-outline"></ion-icon>Assessment Report</a>
+                <!-- <a href="table-advance-tables.html" class="list-group-item d-flex align-items-center"><ion-icon name="folder-open-outline"></ion-icon>Advance Tables</a> -->
+                <!-- <a href="table-datatable.html" class="list-group-item d-flex align-items-center"><ion-icon name="funnel-outline"></ion-icon>Data Tables</a> -->
+              </div>
+            </div>
             <div class="tab-pane fade" id="components">
               <div class="list-group list-group-flush">
                 <div class="list-group-item">
@@ -180,23 +233,7 @@
                 <a href="component-notifications.html" class="list-group-item d-flex align-items-center"><ion-icon name="mic-circle-outline"></ion-icon>Notifications</a>
               </div>
             </div>
-            <div class="tab-pane fade" id="forms">
-              <div class="list-group list-group-flush">
-                <div class="list-group-item">
-                  <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-0">Forms</h5>
-                  </div>
-                  <small class="mb-0">Some placeholder content</small>
-                </div>
-                <a href="form-elements.html" class="list-group-item d-flex align-items-center"><ion-icon name="document-outline"></ion-icon>Form Elements</a>
-                <a href="form-input-group.html" class="list-group-item d-flex align-items-center"><ion-icon name="clipboard-outline"></ion-icon>Input Groups</a>
-                <a href="form-layouts.html" class="list-group-item d-flex align-items-center"><ion-icon name="paper-plane-outline"></ion-icon>Form Layouts</a>
-                <a href="form-validations.html" class="list-group-item d-flex align-items-center"><ion-icon name="aperture-outline"></ion-icon>Form Validations</a>
-                <a href="form-file-upload.html" class="list-group-item d-flex align-items-center"><ion-icon name="cloud-upload-outline"></ion-icon>File Upload</a>
-                <a href="form-date-time-pickes.html" class="list-group-item d-flex align-items-center"><ion-icon name="calendar-outline"></ion-icon>Date Pickers</a>
-                <a href="form-select2.html" class="list-group-item d-flex align-items-center"><ion-icon name="easel-outline"></ion-icon>Select2</a>
-              </div>
-            </div>
+            
             <div class="tab-pane fade" id="tables">
               <div class="list-group list-group-flush">
                 <div class="list-group-item">

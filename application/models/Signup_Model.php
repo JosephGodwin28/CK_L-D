@@ -11,7 +11,7 @@ $data=array(
 $query=$this->db->insert('tblusers',$data);
 if($query){
 $this->session->set_flashdata('success','Registration successfull, Now you can login.');	
-redirect('signup');
+redirect('views/signup');
 } else {
 $this->session->set_flashdata('error','Something went wrong. Please try again.');	
 redirect('signup');	
