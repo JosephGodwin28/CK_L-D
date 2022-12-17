@@ -447,7 +447,7 @@ function performance_report() {
             return '<span style="color:' + color + '">' + data + '</span>';
             }  },
             {"data":"Final_Final_percentage"},
-            {"data":"Final_status1"},
+            {"data":"end_status"},
         ],
         "order": [
             [1, 'asc']

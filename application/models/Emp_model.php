@@ -724,62 +724,62 @@ class Emp_model extends CI_Model{
 			"aaData" => $data
 		);
 		return $response;
-	}else
-	{
-		$this->db->select('*');
-		$this->db->where('trainee_code',$postData_where);
-		$records=$this->db->get('create_trainee')->result();
-		$totalRecords = count($records);
-		$totalRecordwithFilter = count($records);
-		$i=1;
-		$data = array();
+		}else
+		{
+			$this->db->select('*');
+			$this->db->where('trainee_code',$postData_where);
+			$records=$this->db->get('create_trainee')->result();
+			$totalRecords = count($records);
+			$totalRecordwithFilter = count($records);
+			$i=1;
+			$data = array();
 
-		foreach ($records as $record) {
-			// echo "<pre>";print_r($record->batch_code);die;	
-			$batch_code=$record->batch_code."<input id='batch_code' name='batch_code' type='hidden' value='".$record->batch_code."'>";
-			$trainee_code=$record->trainee_code."<input id='trainee_code' name='trainee_code' type='hidden' value='".$record->trainee_code."'>";
-			$name_trainee=$record->name_trainee."<input id='name_trainee' name='name_trainee' type='hidden' value='".$record->name_trainee."'>";
-			$location=$record->location."<input id='location' name='location' type='hidden' value='".$record->location."'>";
-			$join_date=$record->join_date."<input id='join_date' name='join_date' type='hidden' value='".$record->join_date."'>";
-			$current_date=date('d-m-Y')."<input id='current_date' name='current_date' type='hidden' value='".date('d-m-Y')."'>";
-			$designation=$record->designation."<input id='designation' name='designation' type='hidden' value='".$record->designation."'>";
-			$pro_sbu=$record->pro_sbu."<input id='pro_sbu' name='pro_sbu' type='hidden' value='".$record->pro_sbu."'>";
-			$emp_code=$record->emp_code."<input id='emp_code' name='emp_code' type='hidden' value='".$record->emp_code."'>";
-			$rag = '<select name="rag" class="form-control form-select" id="rag" required >
-						<option value="">Select</option>
-						<option value="Amber">Amber</option>
-						<option value="Green">Green</option>
-						<option value="Red">Red</option>
-					</select>';
-			$remarks = '<input type="text"class="form-control" id="remarks" name="remarks" required></input>';
-            
-			$data[] = array(
-				"id" => $i,
-				"batch_code" => $batch_code,
-				"trainee_code" => $trainee_code,
-				"name_trainee" => $name_trainee,
-				"location"=> $location,
-				"join_date"=> $join_date,
-				"current_date"=> $current_date,
-				"designation"=> $designation,
-				"pro_sbu"=> $pro_sbu,
-				"emp_code"=> $emp_code,
-				"rag"=> $rag,
-				"remarks"=> $remarks,
+			foreach ($records as $record) {
+				// echo "<pre>";print_r($record->batch_code);die;	
+				$batch_code=$record->batch_code."<input id='batch_code' name='batch_code' type='hidden' value='".$record->batch_code."'>";
+				$trainee_code=$record->trainee_code."<input id='trainee_code' name='trainee_code' type='hidden' value='".$record->trainee_code."'>";
+				$name_trainee=$record->name_trainee."<input id='name_trainee' name='name_trainee' type='hidden' value='".$record->name_trainee."'>";
+				$location=$record->location."<input id='location' name='location' type='hidden' value='".$record->location."'>";
+				$join_date=$record->join_date."<input id='join_date' name='join_date' type='hidden' value='".$record->join_date."'>";
+				$current_date=date('d-m-Y')."<input id='current_date' name='current_date' type='hidden' value='".date('d-m-Y')."'>";
+				$designation=$record->designation."<input id='designation' name='designation' type='hidden' value='".$record->designation."'>";
+				$pro_sbu=$record->pro_sbu."<input id='pro_sbu' name='pro_sbu' type='hidden' value='".$record->pro_sbu."'>";
+				$emp_code=$record->emp_code."<input id='emp_code' name='emp_code' type='hidden' value='".$record->emp_code."'>";
+				$rag = '<select name="rag" class="form-control form-select" id="rag" required >
+							<option value="">Select</option>
+							<option value="Amber">Amber</option>
+							<option value="Green">Green</option>
+							<option value="Red">Red</option>
+						</select>';
+				$remarks = '<input type="text"class="form-control" id="remarks" name="remarks" required></input>';
+				
+				$data[] = array(
+					"id" => $i,
+					"batch_code" => $batch_code,
+					"trainee_code" => $trainee_code,
+					"name_trainee" => $name_trainee,
+					"location"=> $location,
+					"join_date"=> $join_date,
+					"current_date"=> $current_date,
+					"designation"=> $designation,
+					"pro_sbu"=> $pro_sbu,
+					"emp_code"=> $emp_code,
+					"rag"=> $rag,
+					"remarks"=> $remarks,
+				);
+				$i++;
+			}
+			// echo "<pre>";print_r($data);die;
+
+			//# Response
+			$response = array(
+				"draw" => intval($draw),
+				"iTotalRecords" => $totalRecords,
+				"iTotalDisplayRecords" => $totalRecordwithFilter,
+				"aaData" => $data
 			);
-			$i++;
+			return $response;
 		}
-		// echo "<pre>";print_r($data);die;
-
-        //# Response
-		$response = array(
-			"draw" => intval($draw),
-			"iTotalRecords" => $totalRecords,
-			"iTotalDisplayRecords" => $totalRecordwithFilter,
-			"aaData" => $data
-		);
-		return $response;
-	}
 	}
 	function create_emp_remarks($table,$data)
 	{
@@ -942,7 +942,7 @@ class Emp_model extends CI_Model{
 				$this->db->where('a_c.Levels',$postData_where['level']); 
 				
 				if($postData_where['attempt']=='A4')
-				{
+				{ 
 					$this->db->where('a_c.Attempts','A3'); 
 					$this->db->where('a_c.Percentage<80');
 					$records = $this->db->get()->result();
@@ -959,7 +959,6 @@ class Emp_model extends CI_Model{
 						$value = $this->db->get()->result();
 						if(!empty($value))
 						{
-							
 							foreach($value as $val)
 							{
 								$trainee_code=$val->trainee_code."<input id='trainee_code' type='hidden' value='".$val->trainee_code."'>";
@@ -987,15 +986,38 @@ class Emp_model extends CI_Model{
 							$name_trainee=$record->name_trainee."<input id='name_trainee' type='hidden' value='".$record->name_trainee."'>";
 							if($record->Percentage<'80'&&($postData_where['attempt']=='A4'))
 							{
-								$mark='<input type="text"class="form-control common" id="mark" name="mark[]" onkeypress="return isNumber(event)" disabled></input>';
-								$totalmark="<input class='form-control tm' name='tot_mark[]' id='totalmark' onkeypress='return isNumber(event)' type='text' disabled>";
+								$mark='<input type="text"class="form-control common tv" id="mark" name="mark[]" onkeypress="return isNumber(event)" disabled></input>';
+								$totalmark="<input class='form-control tm tv' name='tot_mark[]' id='totalmark' onkeypress='return isNumber(event)' type='text' disabled>";
 								$percentage='<input type="text"class="form-control" id="percentage" name="percentage[]" onkeypress="return isNumber(event)" readonly></input>';
+								$empty="";
+									$Attrited="";
+									$Certification_failed="";
+									$Terminated="";
+									$Moved_to_Business="";
+								if($record->Status=="")
+								{
+									$empty= 'selected';
+								}elseif($record->Status=="Attrited")
+								{
+									$Attrited= 'selected';
+								}elseif($record->Status=="Certification failed")
+								{
+									$Certification_failed= 'selected';
+								}elseif($record->Status=="Terminated")
+								{
+									$Terminated= 'selected';
+								}elseif($record->Status=="Moved to Business")
+								{
+									$Moved_to_Business= 'selected';
+								}else{
+									
+								}
 								$sts  = "<select name='status[]' class='form-control form-select' id='status' disabled >";
-								$sts .=	"<option value=''>Select</option>";
-								$sts .=	"<option value='Attrited'>Attrited</option>";
-								$sts .=	"<option value='Certification failed'>Certification failed</option>";
-								$sts .=	"<option value='Terminated'>Terminated</option>";
-								$sts .=	"<option value='Moved to Business'>Moved to Business</option>";
+								$sts .=	"<option value=''".$empty.">Select</option>";
+								$sts .=	"<option value='Attrited' ".$Attrited.">Attrited</option>";
+								$sts .=	"<option value='Certification failed' ".$Certification_failed.">Certification failed</option>";
+								$sts .=	"<option value='Terminated' ".$Terminated.">Terminated</option>";
+								$sts .=	"<option value='Moved to Business' ".$Moved_to_Business.">Moved to Business</option>";
 								$sts .=	"</select>";
 							}else{
 								$mark=$record->Mark;
@@ -1070,15 +1092,38 @@ class Emp_model extends CI_Model{
 							$name_trainee=$record->name_trainee."<input id='name_trainee' type='hidden' value='".$record->name_trainee."'>";
 							if($record->Percentage<'80'&&($postData_where['attempt']=='A3'))
 							{
-								$mark='<input type="text"class="form-control common" id="mark" name="mark[]" onkeypress="return isNumber(event)" disabled></input>';
-								$totalmark="<input class='form-control tm' name='tot_mark[]' id='totalmark' onkeypress='return isNumber(event)' type='text' disabled>";
+								$mark='<input type="text"class="form-control common tv" id="mark" name="mark[]" onkeypress="return isNumber(event)" disabled></input>';
+								$totalmark="<input class='form-control tm tv' name='tot_mark[]' id='totalmark' onkeypress='return isNumber(event)' type='text' disabled>";
 								$percentage='<input type="text"class="form-control" id="percentage" name="percentage[]" onkeypress="return isNumber(event)" readonly></input>';
+								$empty="";
+									$Attrited="";
+									$Certification_failed="";
+									$Terminated="";
+									$Moved_to_Business="";
+								if($record->Status=="")
+								{
+									$empty= 'selected';
+								}elseif($record->Status=="Attrited")
+								{
+									$Attrited= 'selected';
+								}elseif($record->Status=="Certification failed")
+								{
+									$Certification_failed= 'selected';
+								}elseif($record->Status=="Terminated")
+								{
+									$Terminated= 'selected';
+								}elseif($record->Status=="Moved to Business")
+								{
+									$Moved_to_Business= 'selected';
+								}else{
+									
+								}
 								$sts  = "<select name='status[]' class='form-control form-select' id='status' disabled >";
-								$sts .=	"<option value=''>Select</option>";
-								$sts .=	"<option value='Attrited'>Attrited</option>";
-								$sts .=	"<option value='Certification failed'>Certification failed</option>";
-								$sts .=	"<option value='Terminated'>Terminated</option>";
-								$sts .=	"<option value='Moved to Business'>Moved to Business</option>";
+								$sts .=	"<option value=''".$empty.">Select</option>";
+								$sts .=	"<option value='Attrited' ".$Attrited.">Attrited</option>";
+								$sts .=	"<option value='Certification failed' ".$Certification_failed.">Certification failed</option>";
+								$sts .=	"<option value='Terminated' ".$Terminated.">Terminated</option>";
+								$sts .=	"<option value='Moved to Business' ".$Moved_to_Business.">Moved to Business</option>";
 								$sts .=	"</select>";
 							}else{
 								$mark=$record->Mark;
@@ -1153,15 +1198,38 @@ class Emp_model extends CI_Model{
 							$name_trainee=$record->name_trainee."<input id='name_trainee' type='hidden' value='".$record->name_trainee."'>";
 							if($record->Percentage<'80'&&($postData_where['attempt']=='A2'))
 							{
-								$mark='<input type="text"class="form-control common" id="mark" name="mark[]" onkeypress="return isNumber(event)" disabled></input>';
-								$totalmark="<input class='form-control tm' name='tot_mark[]' id='totalmark' onkeypress='return isNumber(event)' type='text' disabled>";
+								$mark='<input type="text"class="form-control common tv" id="mark" name="mark[]" onkeypress="return isNumber(event)" disabled></input>';
+								$totalmark="<input class='form-control tm tv' name='tot_mark[]' id='totalmark' onkeypress='return isNumber(event)' type='text' disabled>";
 								$percentage='<input type="text"class="form-control" id="percentage" name="percentage[]" onkeypress="return isNumber(event)" readonly></input>';
+									$empty="";
+									$Attrited="";
+									$Certification_failed="";
+									$Terminated="";
+									$Moved_to_Business="";
+								if($record->Status=="")
+								{
+									$empty= 'selected';
+								}elseif($record->Status=="Attrited")
+								{
+									$Attrited= 'selected';
+								}elseif($record->Status=="Certification failed")
+								{
+									$Certification_failed= 'selected';
+								}elseif($record->Status=="Terminated")
+								{
+									$Terminated= 'selected';
+								}elseif($record->Status=="Moved to Business")
+								{
+									$Moved_to_Business= 'selected';
+								}else{
+									
+								}
 								$sts  = "<select name='status[]' class='form-control form-select' id='status' disabled >";
-								$sts .=	"<option value=''>Select</option>";
-								$sts .=	"<option value='Attrited'>Attrited</option>";
-								$sts .=	"<option value='Certification failed'>Certification failed</option>";
-								$sts .=	"<option value='Terminated'>Terminated</option>";
-								$sts .=	"<option value='Moved to Business'>Moved to Business</option>";
+								$sts .=	"<option value=''".$empty.">Select</option>";
+								$sts .=	"<option value='Attrited' ".$Attrited.">Attrited</option>";
+								$sts .=	"<option value='Certification failed' ".$Certification_failed.">Certification failed</option>";
+								$sts .=	"<option value='Terminated' ".$Terminated.">Terminated</option>";
+								$sts .=	"<option value='Moved to Business' ".$Moved_to_Business.">Moved to Business</option>";
 								$sts .=	"</select>";
 							}else{
 								$mark=$record->Mark;
@@ -1239,8 +1307,8 @@ class Emp_model extends CI_Model{
 							{
 								$trainee_code=$record->trainee_code."<input id='trainee_code' type='hidden' value='".$record->trainee_code."'>";
 								$name_trainee=$record->name_trainee."<input id='name_trainee' type='hidden' value='".$record->name_trainee."'>";
-								$totalmark="<input class='form-control tm' name='tot_mark[]' id='totalmark' onkeypress='return isNumber(event)' type='text' disabled>";
-								$mark='<input type="text"class="form-control common" id="mark" name="mark[]" onkeypress="return isNumber(event)" disabled></input>';
+								$totalmark="<input class='form-control tm tv' name='tot_mark[]' id='totalmark' onkeypress='return isNumber(event)' type='text' disabled>";
+								$mark='<input type="text"class="form-control common tv" id="mark" name="mark[]" onkeypress="return isNumber(event)" disabled></input>';
 								$percentage='<input type="text"class="form-control" id="percentage" name="percentage[]" onkeypress="return isNumber(event)" readonly></input>';
 								$sts = "<select name='status[]' class='form-control form-select' id='status' disabled >
 											<option value=''>Select</option>
@@ -1316,7 +1384,6 @@ class Emp_model extends CI_Model{
 					}
 					
 				}
-			
 				// print_r($this->db->last_query());die;
 			}
 			elseif(!empty($postData_where['batch_no']&&$postData_where['level'])) 
@@ -1371,8 +1438,8 @@ class Emp_model extends CI_Model{
 					{
 						$trainee_code=$record->trainee_code."<input id='trainee_code' type='hidden' value='".$record->trainee_code."'>";
 						$name_trainee=$record->name_trainee."<input id='name_trainee' type='hidden' value='".$record->name_trainee."'>";
-						$totalmark="<input class='form-control tm' name='tot_mark[]' id='totalmark' onkeypress='return isNumber(event)' type='text' disabled>";
-						$mark='<input type="text"class="form-control common" id="mark" name="mark[]" onkeypress="return isNumber(event)" disabled></input>';
+						$totalmark="<input class='form-control tm tv' name='tot_mark[]' id='totalmark' onkeypress='return isNumber(event)' type='text' disabled>";
+						$mark='<input type="text"class="form-control common tv" id="mark" name="mark[]" onkeypress="return isNumber(event)" disabled></input>';
 						$percentage='<input type="text"class="form-control" id="percentage" name="percentage[]" onkeypress="return isNumber(event)" readonly></input>';
 						$sts = "<select name='status[]' class='form-control form-select' id='status' disabled >
 									<option value=''>Select</option>
@@ -1416,8 +1483,8 @@ class Emp_model extends CI_Model{
 					{
 						$trainee_code=$record->trainee_code."<input id='trainee_code' type='hidden' value='".$record->trainee_code."'>";
 						$name_trainee=$record->name_trainee."<input id='name_trainee' type='hidden' value='".$record->name_trainee."'>";
-						$totalmark="<input class='form-control tm' name='tot_mark[]' id='totalmark' onkeypress='return isNumber(event)' type='text' disabled>";
-						$mark='<input type="text"class="form-control common" id="mark" name="mark[]" onkeypress="return isNumber(event)" disabled></input>';
+						$totalmark="<input class='form-control tm tv' name='tot_mark[]' id='totalmark' onkeypress='return isNumber(event)' type='text' disabled>";
+						$mark='<input type="text"class="form-control common tv" id="mark" name="mark[]" onkeypress="return isNumber(event)" disabled></input>';
 						$percentage='<input type="text"class="form-control" id="percentage" name="percentage[]" onkeypress="return isNumber(event)" readonly></input>';
 						$sts = "<select name='status[]' class='form-control form-select' id='status' disabled >
 									<option value=''>Select</option>
@@ -1460,8 +1527,8 @@ class Emp_model extends CI_Model{
 				{
 					$trainee_code=$record->trainee_code."<input id='trainee_code' type='hidden' value='".$record->trainee_code."'>";
 					$name_trainee=$record->name_trainee."<input id='name_trainee' type='hidden' value='".$record->name_trainee."'>";
-					$totalmark="<input class='form-control tm' name='tot_mark[]' id='totalmark' onkeypress='return isNumber(event)' type='text' disabled>";
-					$mark='<input type="text"class="form-control common" id="mark" name="mark[]" onkeypress="return isNumber(event)" disabled></input>';
+					$totalmark="<input class='form-control tm tv' name='tot_mark[]' id='totalmark' onkeypress='return isNumber(event)' type='text' disabled>";
+					$mark='<input type="text"class="form-control common tv" id="mark" name="mark[]" onkeypress="return isNumber(event)" disabled></input>';
 					$percentage='<input type="text"class="form-control" id="percentage" name="percentage[]" onkeypress="return isNumber(event)" readonly></input>';
 					$sts = "<select name='status[]' class='form-control form-select' id='status' disabled >
 								<option value=''>Select</option>
@@ -1848,7 +1915,7 @@ class Emp_model extends CI_Model{
 				$this->db->select('Mark,Percentage,Status');
 				$this->db->from('assessment_and_certificate');
 				$this->db->where('Batch_code',$batch_code);
-				$this->db->where('Trainee_code',$trainee_code);
+				$this->db->where('Trainee_code',$trainee_code)->limit(1)->order_by('Id',"DESC");
 				if($this->db->where('Levels','Final')) {$this->db->where('Attempts','A1');}
 				$d=$this->db->get()->result();
 				// echo"<pre>";print_r($d);
@@ -1864,11 +1931,10 @@ class Emp_model extends CI_Model{
 					$Final_percentage1 = $d1->Percentage;
 					$Final_status1 = $d1->Status;
 				}}
-				
-				$this->db->select('Mark,Percentage');
+				$this->db->select('Mark,Percentage,Status');
 				$this->db->from('assessment_and_certificate');
 				$this->db->where('Batch_code',$batch_code);
-				$this->db->where('Trainee_code',$trainee_code);
+				$this->db->where('Trainee_code',$trainee_code)->limit(1)->order_by('Id',"DESC");
 				if($this->db->where('Levels','Final')) {$this->db->where('Attempts','A2');}
 				$d=$this->db->get()->result();
 				if(empty($d))
@@ -1883,10 +1949,10 @@ class Emp_model extends CI_Model{
 					$Final_percentage2 = $d1->Percentage;
 					$Final_status2 = $d1->Status;
 				}}
-				$this->db->select('Mark,Percentage');
+				$this->db->select('Mark,Percentage,Status');
 				$this->db->from('assessment_and_certificate');
 				$this->db->where('Batch_code',$batch_code);
-				$this->db->where('Trainee_code',$trainee_code);
+				$this->db->where('Trainee_code',$trainee_code)->limit(1)->order_by('Id',"DESC");
 				if($this->db->where('Levels','Final')) {$this->db->where('Attempts','A3');}
 				$d=$this->db->get()->result();
 				if(empty($d))
@@ -1901,10 +1967,10 @@ class Emp_model extends CI_Model{
 					$Final_percentage3 = $d1->Percentage;
 					$Final_status3 = $d1->Status;
 				}}
-				$this->db->select('Mark,Percentage');
+				$this->db->select('Mark,Percentage,Status');
 				$this->db->from('assessment_and_certificate');
 				$this->db->where('Batch_code',$batch_code);
-				$this->db->where('Trainee_code',$trainee_code);
+				$this->db->where('Trainee_code',$trainee_code)->limit(1)->order_by('Id',"DESC");
 				if($this->db->where('Levels','Final')) {$this->db->where('Attempts','A4');}
 				$d=$this->db->get()->result();
 				if(empty($d))
@@ -1922,7 +1988,18 @@ class Emp_model extends CI_Model{
 
 				$attempt1=$record->Mark;
 				$percentage1=$record->Percentage;
-				
+				if(!empty($Final_status4))
+				{
+					$end_status = $Final_status4;
+				}elseif(!empty($Final_status3))
+				{
+					$end_status = $Final_status3;
+				}elseif(!empty($Final_status2))
+				{
+					$end_status = $Final_status2;
+				}else{
+					$end_status = $Final_status1;
+				}
 				$L1finalpercentage=max($percentage1,$percentage2,$percentage3,$percentage4);
 				$L2finalpercentage=max($L2_percentage1,$L2_percentage2,$L2_percentage3,$L2_percentage4);
 				$L3finalpercentage=max($L3_percentage1,$L3_percentage2,$L3_percentage3,$L3_percentage4);
@@ -1976,10 +2053,7 @@ class Emp_model extends CI_Model{
 					"Final_percentage2"=>$Final_percentage2,
 					"Final_percentage3"=>$Final_percentage3,
 					"Final_percentage4"=>$Final_percentage4,
-					"Final_status1" => $Final_status1,
-					"Final_status2" => $Final_status2,
-					"Final_status3" => $Final_status3,
-					"Final_status4" => $Final_status4,
+					"end_status" => $end_status,
 					"Final_Final_percentage"=>$Final_Final_percentage,
 					
 				);

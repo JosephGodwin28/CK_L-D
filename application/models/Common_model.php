@@ -307,6 +307,7 @@ class Common_model extends CI_Model{
 		// $this->db->select($id);
 		$this->db->select($batch_code);
 		$this->db->distinct();
+		$this->db->where("batch_code!=","");
 		$records=$this->db->get($table);
 		return $records->result();
 	}

@@ -111,7 +111,7 @@
 
                         <div class="row" style="padding: 10px;">
                             <div class="col-md-2">
-                                <h6>Batch_code</h6>
+                                <h6>Batch Code</h6>
                                 <select class="form-select form-control single-select" name="batch_no" id="batch_no" onchange="batchno();" required>
                                     <option value=""></option>
                                 </select>
@@ -242,7 +242,7 @@
 
 <script type="text/javascript"></script>
 <script>
-    $(document).on('input','input.tm',function(){
+    $(document).on('input','input.tv',function(){
         $common = $(this).parents('tr').find('.common');
         $expenseTotal = $(this).parents('tr').find('#percentage');
         $total_mark = $(this).parents('tr').find('.tm');

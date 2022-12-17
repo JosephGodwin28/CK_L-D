@@ -111,13 +111,13 @@
 
                         <div class="row" style="padding: 10px;">
                             <div class="col-md-2">
-                                <h6>Batch_code</h6>
+                                <h6>Batch Code</h6>
                                 <select class="form-select form-control single-select" name="batch_no" id="batch_no" onchange="batchno();" required>
                                     <option value=""></option>
                                 </select>
                             </div>
                             <div class="col-md-2">
-                                <h6>Trainee_code</h6>
+                                <h6>Trainee Name</h6>
                                 <select class="form-select form-control single-select" name="trainee_code" id="trainee_code" required>
                                     <option value=""></option>
                                 </select>
