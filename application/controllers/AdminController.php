@@ -32,6 +32,10 @@ class AdminController extends CI_Controller {
     public function edit_user_form(){
         $this->load->view('edit_user_form');
     } 
+    public function add_remark()
+    {
+        $this->load->view('add_remark');
+    }
 
     /*supervisor name list*/
     public function get_supervisor_name_list(){

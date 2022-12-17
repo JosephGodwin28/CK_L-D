@@ -105,7 +105,7 @@
                   <br>
 				<div class="card">
                     <br>
-                    <form  id="addRemark" method="POST" action="javascript:void(0)">
+                    <form  id="addperformance" method="POST" action="javascript:void(0)">
                         <?php //echo '<pre>' . print_r($_SESSION, TRUE) . '</pre>';?>
                         <!-- <input type="hidden" name="id_row" id="id_row"> -->
 
@@ -117,30 +117,83 @@
                                 </select>
                             </div>
                             <div class="col-md-2">
-                                <h6>Trainee_code</h6>
-                                <select class="form-select form-control single-select" name="trainee_code" id="trainee_code" required>
+                                <h6>Emp No</h6>
+                                <select class="form-select" name="trainee_code" id="trainee_code" class="form-control single-select" required>
                                     <option value=""></option>
                                 </select>
                             </div>
-                            
+                            <!-- <div class="col-md-2">
+                                <h6>Attempts</h6>
+                                <select class="form-select form-control single-select" name="attempt" id="attempt" required>
+                                    <option value="">Select</option>
+                                    <option value="A1">Attempt 1</option>
+                                    <option value="A2">Attempt 2</option>
+                                </select>
+                            </div> -->
 					<div class="card-body">
 						<div class="table-responsive">
-							<table id="remark_table" class="table table-striped table-bordered" style="width:100%">
+							<table id="performance_table" class="table table-striped table-bordered " style="width:100%">
 								<thead>
+                                    <tr>
+                                        <th colspan="3" class="border-bottom"></th>
+                                        <th colspan="9" class="text-center border-top border-bottom">Level 1</th>
+                                        <th colspan="9" class="text-center border-top border-bottom">Level 2</th>
+                                        <th colspan="9" class="text-center border-top border-bottom">Level 3</th>
+                                        <th colspan="9" class="text-center border-top border-bottom">Level 4</th>
+                                        <th colspan="9" class="text-center border-top border-bottom">Final Certification</th>
+                                        <th class="border-bottom"></th>
+
+                                    </tr>
 									<tr>
-                                        <!-- <th>#</th> -->
 										<th>Sno</th>
-										<th>Batch No</th>
-                                        <th>Emp Id</th>
-										<th>Name</th>
-										<th>Location</th>
-										<th>Date Of Joining</th>
-										<th>Current Date</th>
-										<th>Designation</th>
-										<th>Process/SBU</th>
-										<th>Trainer</th>
-										<th>RAG</th>
-										<th>Remarks</th>
+										<th>Batch Code</th>
+                                        <th>Trainee Code</th>
+                                        <th>Attempt 1</th>
+                                        <th>Percentage</th>
+                                        <th>Attempt 2</th>
+                                        <th>Percentage</th>
+                                        <th>Attempt 3</th>
+                                        <th>Percentage</th>
+                                        <th>Attempt 4</th>
+                                        <th>Percentage</th>
+                                        <th>Final  Percentage</th>
+                                        <th>Attempt 1</th>
+                                        <th>Percentage</th>
+                                        <th>Attempt 2</th>
+                                        <th>Percentage</th>
+                                        <th>Attempt 3</th>
+                                        <th>Percentage</th>
+                                        <th>Attempt 4</th>
+                                        <th>Percentage</th>
+                                        <th>Final  Percentage</th>
+                                        <th>Attempt 1</th>
+                                        <th>Percentage</th>
+                                        <th>Attempt 2</th>
+                                        <th>Percentage</th>
+                                        <th>Attempt 3</th>
+                                        <th>Percentage</th>
+                                        <th>Attempt 4</th>
+                                        <th>Percentage</th>
+                                        <th>Final  Percentage</th>
+                                        <th>Attempt 1</th>
+                                        <th>Percentage</th>
+                                        <th>Attempt 2</th>
+                                        <th>Percentage</th>
+                                        <th>Attempt 3</th>
+                                        <th>Percentage</th>
+                                        <th>Attempt 4</th>
+                                        <th>Percentage</th>
+                                        <th>Final  Percentage</th>
+                                        <th>Attempt 1</th>
+                                        <th>Percentage</th>
+                                        <th>Attempt 2</th>
+                                        <th>Percentage</th>
+                                        <th>Attempt 3</th>
+                                        <th>Percentage</th>
+                                        <th>Attempt 4</th>
+                                        <th>Percentage</th>
+                                        <th>Final  Percentage</th>
+                                        <th>Status</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -148,9 +201,6 @@
 							</table>
 						</div>
 					</div>
-                    <div class="text-center">
-                        <button class="btn btn-success" type="submit" id="remarkbtn" value="submit">Submit</button>
-                    </div>
                 </form>
 			</div>
       </div>
@@ -207,7 +257,7 @@
 
     <!-- Main JS-->
     <script src="<?php echo asset_url();?>js/main.js"></script>
-    <script src="<?php echo asset_url();?>pro_js/remark.js"></script>
+    <script src="<?php echo asset_url();?>pro_js/performance_report.js"></script>
 
     <!-- Moment JS-->
     <script src="<?php echo asset_url();?>js/moment.min.js"></script>
@@ -224,6 +274,7 @@
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/bootstrap-growl.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url();?>assets/pages/notification/notification.js"></script>
 
-<script type="text/javascript"></script>
+    <script type="text/javascript"></script>
+
   </body>
 </html>

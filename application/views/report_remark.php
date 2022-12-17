@@ -60,7 +60,7 @@
         <?php include('application/views/layouts/topbar.php'); ?>
 				<button type="button" class="btn btn-primary modal_trigger_btn" data-toggle="modal" data-target="#adt_details_modal" id="adt_details_modal_btn">Basic  Modal</button>
 					<div class="modal fade" id="adt_details_modal" tabindex="-1" role="dialog" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-scrollable  modal-lg">
+                        <div class="modal-dialog modal-dialog-scrollable modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title">Trainee Details</h5>
@@ -105,7 +105,7 @@
                   <br>
 				<div class="card">
                     <br>
-                    <form  id="addRemark" method="POST" action="javascript:void(0)">
+                    <form id="addRemark" method="POST" action="javascript:void(0)">
                         <?php //echo '<pre>' . print_r($_SESSION, TRUE) . '</pre>';?>
                         <!-- <input type="hidden" name="id_row" id="id_row"> -->
 
@@ -125,7 +125,7 @@
                             
 					<div class="card-body">
 						<div class="table-responsive">
-							<table id="remark_table" class="table table-striped table-bordered" style="width:100%">
+							<table id="report_remark_table" class="table table-striped table-bordered" style="width:100%">
 								<thead>
 									<tr>
                                         <!-- <th>#</th> -->
@@ -141,6 +141,7 @@
 										<th>Trainer</th>
 										<th>RAG</th>
 										<th>Remarks</th>
+										<th>Action</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -148,9 +149,6 @@
 							</table>
 						</div>
 					</div>
-                    <div class="text-center">
-                        <button class="btn btn-success" type="submit" id="remarkbtn" value="submit">Submit</button>
-                    </div>
                 </form>
 			</div>
       </div>
@@ -181,6 +179,58 @@
                         <button type="button" class="btn btn-secondary" id="confirmClose" data-dismiss="modal">Close</button>
                     </div>
 
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="remark_modal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Edit Remark Details</h5>
+                        <!-- <button type="button" class="close" onclick="get_action_pop();" aria-label="Close"> <span aria-hidden="true">&times;</span>
+                        </button> -->
+                    </div>
+                    <div class="modal-body">
+                        <form id="update_remark_form">
+                            <div class="row">
+                                <div class="col-md-10 offset-md-1 my-2">
+                                    <h6>Batch Code</h6>
+                                    <input class="form-control" type="text" name="edit_batch_code" id="edit_batch_code" readonly>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-10 offset-md-1 my-2">
+                                    <h6>Trainee Code</h6>
+                                    <input class="form-control" type="text" name="edit_trainee_code" id="edit_trainee_code" readonly>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-10 offset-md-1 my-2">
+                                    <h6>Rag</h6>
+                                    <select class="form-select" name="edit_rag" id="edit_rag">
+                                        <option id="default" value="Default">Select</option>
+                                        <option id="amber" value="Amber">Amber</option>
+                                        <option id="green" value="Green">Green</option>
+                                        <option id="red" value="Red">Red</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-10 offset-md-1 my-2">
+                                    <h6>Remark</h6>
+                                    <input type="text" class="form-control" id="edit_remark" name="edit_remark">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-10 offset-md-1 my-2 text-start">
+                                    <button type="button" id="update_remark" class="btn btn-success">Update</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger px-5 rounded-0" onclick="get_action_pop();">Close</button>
+                    </div>
                 </div>
             </div>
         </div>

@@ -105,7 +105,7 @@
                   <br>
 				<div class="card">
                     <br>
-                    <form  id="addRemark" method="POST" action="javascript:void(0)">
+                    <form  id="addperformance" method="POST" action="javascript:void(0)">
                         <?php //echo '<pre>' . print_r($_SESSION, TRUE) . '</pre>';?>
                         <!-- <input type="hidden" name="id_row" id="id_row"> -->
 
@@ -117,30 +117,46 @@
                                 </select>
                             </div>
                             <div class="col-md-2">
-                                <h6>Trainee_code</h6>
-                                <select class="form-select form-control single-select" name="trainee_code" id="trainee_code" required>
-                                    <option value=""></option>
+                                <h6>Levels</h6>
+                                <select class="form-select form-control single-select" name="level" id="level" required>
+                                    <option value="">Select</option>
+                                    <option value="L1">Level 1</option>
+                                    <option value="L2">Level 2</option>
+                                    <option value="L3">Level 3</option>
+                                    <option value="L4">Level 4</option>
+                                    <!-- <option value="L5">Level 5</option> -->
+                                    <!-- <option value="L6">Level 6</option> -->
+                                    <!-- <option value="L7">Level 7</option> -->
+                                    <!-- <option value="L8">Level 8</option> -->
+                                    <!-- <option value="L9">Level 9</option> -->
+                                    <!-- <option value="L10">Level 10</option> -->
+                                    <option id="Final" value="Final">Final Certification</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <h6>Attempts</h6>
+                                <select class="form-select form-control single-select" name="attempt" id="attempt" required>
+                                    <option value="">Select</option>
+                                    <option value="A1">Attempt 1</option>
+                                    <option value="A2">Attempt 2</option>
+                                    <option value="A3">Attempt 3</option>
+                                    <option value="A4">Attempt 4</option>
                                 </select>
                             </div>
                             
 					<div class="card-body">
 						<div class="table-responsive">
-							<table id="remark_table" class="table table-striped table-bordered" style="width:100%">
+							<table id="performance_table" class="table table-striped table-bordered" style="width:100%">
 								<thead>
 									<tr>
-                                        <!-- <th>#</th> -->
-										<th>Sno</th>
-										<th>Batch No</th>
-                                        <th>Emp Id</th>
-										<th>Name</th>
-										<th>Location</th>
-										<th>Date Of Joining</th>
-										<th>Current Date</th>
-										<th>Designation</th>
-										<th>Process/SBU</th>
-										<th>Trainer</th>
-										<th>RAG</th>
-										<th>Remarks</th>
+                                        <th>#</th>
+										<th>S.no</th>
+										<th>Trainee Code</th>
+                                        <th>Trainee Name</th>
+                                        <th>Mark</th>
+                                        <th>Total Mark</th>
+                                        <th>Percentage</th>
+                                        <th>Status</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -149,7 +165,7 @@
 						</div>
 					</div>
                     <div class="text-center">
-                        <button class="btn btn-success" type="submit" id="remarkbtn" value="submit">Submit</button>
+                        <button class="btn btn-success" type="submit" id="assignSubmit" value="submit">Submit</button>
                     </div>
                 </form>
 			</div>
@@ -207,7 +223,7 @@
 
     <!-- Main JS-->
     <script src="<?php echo asset_url();?>js/main.js"></script>
-    <script src="<?php echo asset_url();?>pro_js/remark.js"></script>
+    <script src="<?php echo asset_url();?>pro_js/performance.js"></script>
 
     <!-- Moment JS-->
     <script src="<?php echo asset_url();?>js/moment.min.js"></script>
@@ -225,5 +241,36 @@
     <script type="text/javascript" src="<?php echo base_url();?>assets/pages/notification/notification.js"></script>
 
 <script type="text/javascript"></script>
+<script>
+    $(document).on('input','input.tm',function(){
+        $common = $(this).parents('tr').find('.common');
+        $expenseTotal = $(this).parents('tr').find('#percentage');
+        $total_mark = $(this).parents('tr').find('.tm');
+        // console.log($total_mark);
+        let tot_val =0;
+        let tot_mark =0;
+        $.each($common,function(index,object){
+            if($(object).val()!=''){
+            tot_val = tot_val + parseInt($(object).val());
+            }
+        })
+        $.each($total_mark,function(index,object){
+            if($(object).val()!=''){
+            tot_mark = tot_mark + parseInt($(object).val());
+            }
+        })
+            $expenseTotal.val(((tot_val/tot_mark)*100).toFixed(2));
+    });
+    function isNumber(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            return false;
+        }
+        return true;
+        }
+   
+</script>
+
   </body>
 </html>

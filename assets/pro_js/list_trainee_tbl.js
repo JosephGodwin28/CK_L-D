@@ -388,7 +388,7 @@ $('#assignSubmit').submit(function(e) {
     // alert(trainer_name)
     formData.append('batch_code',trainer_name);
 
-  // console.log(check);
+  alert(check);
     if(check_box_len !=0){
         $('.confirm-modal').modal('show');
         $("#confirmSubmit").one('click', function() {
