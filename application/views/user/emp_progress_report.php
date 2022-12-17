@@ -72,7 +72,7 @@
                         <!-- <input type="hidden" name="emp_id" id="emp_id"> -->
                     <div class="card-body">
                         <div class="table-responsive">
-                          <form action="javascript:void(0)" method="POST" id="reportAdd">
+                          <form  method="POST" id="reportAdd" enctype="multipart/form-data" action="javascript:void(0)">
                             <input type="hidden" name="assignedDate" id="assignedDate">
                             <input type="hidden" name="batch_code" id="batch_code">
                             <input type="hidden" name="createdBy_emp" id="createdBy_emp">
@@ -111,11 +111,15 @@
                                 </tbody>
                             </table>
                             <center>
-                                <label >Next Training Date</label>
+                                  <label >Next Training Date</label>
                                   <input type="date" style="width: 20%;" class="form-control" name="assignedDate" id="assignedDate" required><br>
-                                      <label><input class="form-check-input" type="checkbox" id="training_status" name="training_status"> Training Completed </label><br>
-                                <button class="btn btn-success" type="submit" id="SubmitBtn" value="submit">Submit</button>
-                            </center>
+                                  <label >Training Status Picture</label>
+                                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                  <input type='file' style="width: 20%;" class="form-control"  name='day_pic' size='20' required/><br>
+                                  <label><input class="form-check-input" type="checkbox" id="training_status" name="training_status"> Training Completed </label><br>
+                                  <button class="btn btn-success" type="submit" id="SubmitBtn" value="submit">Submit</button>
+                        </center>
+                            
                             </form>
                         </div>
                     </div>

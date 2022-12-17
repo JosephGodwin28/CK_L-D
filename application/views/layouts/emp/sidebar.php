@@ -42,6 +42,9 @@
               <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Today Report">
                 <a href="javascript:;" class="nav-link" data-bs-toggle="pill" data-bs-target="#todayreport"><ion-icon name="bag-handle-sharp"></ion-icon></a>
               </li>
+               <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Training Attendance">
+                <a href="javascript:;" class="nav-link" data-bs-toggle="pill" data-bs-target="#attendancereport"><ion-icon name="map-sharp"></ion-icon></a>
+              </li>
               <!-- <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Components">
                 <a href="javascript:;" class="nav-link" data-bs-toggle="pill" data-bs-target="#components"><ion-icon name="gift-sharp"></ion-icon></a>
               </li>
@@ -103,6 +106,7 @@
                 <a href="index3.html" class="list-group-item d-flex align-items-center"><ion-icon name="bag-check-outline"></ion-icon>eCommerce</a> -->
               </div>
             </div>
+            
             <div class="tab-pane fade" id="Trainee">
               <div class="list-group list-group-flush">
                 <div class="list-group-item">
@@ -138,6 +142,19 @@
                 <a href="ecommerce-checkout-complete.html" class="list-group-item d-flex align-items-center"><ion-icon name="shield-checkmark-outline"></ion-icon>Order Complete</a> -->
               </div>
             </div>
+             <div class="tab-pane fade" id="attendancereport">
+              <div class="list-group list-group-flush">
+                <div class="list-group-item">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-0">Trainee</h5>
+                  </div>
+                  <small class="mb-0">Some placeholder content</small>
+                </div>
+                <a href="<?php echo base_url();?>AttendanceController/attendance_form_report" class="list-group-item d-flex align-items-center"><ion-icon name="print-outline"></ion-icon>Training Attendance</a>
+                <!-- <a href="widgets-data-widgets.html" class="list-group-item d-flex align-items-center"><ion-icon name="pie-chart-outline"></ion-icon>Data Widgets</a> -->
+              </div>
+            </div>
+             
             <div class="tab-pane fade" id="components">
               <div class="list-group list-group-flush">
                 <div class="list-group-item">

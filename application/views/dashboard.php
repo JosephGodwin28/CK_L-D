@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="msapplication-TileImage" content="http://hemas.in/wp-content/uploads/2021/03/cropped-android-chrome-512x512-1-270x270.png" />
     <!--plugins-->
     <link href="<?php echo asset_url();?>plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
 
@@ -69,7 +69,7 @@
                   </div>
                   <h5 class="my-3">Total Orders</h5>
                   <div class="progress mt-1" style="height: 5px;">
-                    <div class="progress-bar bg-gradient-info" role="progressbar" style="width: 65%"></div>
+                    <div class="progress-bar bg-gradient-info" role="progressbar" style="width: 85%"></div>
                   </div>
                   <p class="mb-0 mt-2">48,256<span class="float-end text-danger">-2.8%</span></p>
                 </div>

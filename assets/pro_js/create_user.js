@@ -26,7 +26,6 @@ function get_supervisor_name_list(){
 
 $('#userFormCreat').submit(function(e) {
     
-
     $("#btnSignup").attr("disabled", true);
     $("#btnSignup").html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Processing...');
     

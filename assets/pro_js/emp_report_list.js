@@ -289,11 +289,13 @@ $('#reportAdd').submit(function(e) {
                         window.location = BASE_URL + data.url;
                 }, 1000);
                 
-            }
-            else{
+            } else if(data.response =='FileValidationFailed'){
+                trainee_fileupload_failed_update();
+                $('.SubmitBtn').attr("disabled", false);
+            } else {
                 trainee_failed_update();
                 $('.SubmitBtn').attr("disabled", false);
-                
+                 
             }
                     
         }  

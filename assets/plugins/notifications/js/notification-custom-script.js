@@ -77,6 +77,15 @@
 			msg: 'Login Failed..! Try Again..!'
 		});
 	}
+	function trainee_fileupload_failed_update() {
+		Lobibox.notify('error', {
+			pauseDelayOnHover: true,
+			continueDelayOnInactiveTab: false,
+			position: 'top right',
+			icon: 'bx bx-error',
+			msg: ' Please Upload Valid Image File..! Try Again..!'
+		});
+	}
 
 	function trainee_assigned() {
 	  	Lobibox.notify('success', {
@@ -392,5 +401,62 @@ function anim5_noti() {
 		icon: 'bx bx-check-circle',
 		width: 600,
 		msg: 'Lorem ipsum dolor sit amet hears farmer indemnity inherent.'
+	});
+}
+function ojt_add_success() {
+	  	Lobibox.notify('success', {
+			pauseDelayOnHover: true,
+			continueDelayOnInactiveTab: false,
+			position: 'top right',
+			icon: 'bx bx-check-circle',
+			msg: 'OJT Tracker Added Successfully..!'
+		});
+	}
+
+function ojt_add_failed() {
+	Lobibox.notify('error', {
+		pauseDelayOnHover: true,
+		continueDelayOnInactiveTab: false,
+		position: 'top right',
+		icon: 'bx bx-error',
+		msg: 'OJT Tracker Add Failed..! Try Again..!'
+	});
+}
+function attrition_add_success() {
+  	Lobibox.notify('success', {
+		pauseDelayOnHover: true,
+		continueDelayOnInactiveTab: false,
+		position: 'top right',
+		icon: 'bx bx-check-circle',
+		msg: 'Attrition Tracker Added Successfully..!'
+	});
+}
+
+function attrition_add_failed() {
+	Lobibox.notify('error', {
+		pauseDelayOnHover: true,
+		continueDelayOnInactiveTab: false,
+		position: 'top right',
+		icon: 'bx bx-error',
+		msg: 'Attrition Tracker Add Failed..! Try Again..!'
+	});
+}
+function feedback_add_success() {
+  	Lobibox.notify('success', {
+		pauseDelayOnHover: true,
+		continueDelayOnInactiveTab: false,
+		position: 'top right',
+		icon: 'bx bx-check-circle',
+		msg: 'Trainer feedback Added Successfully..!'
+	});
+}
+
+function feedback_add_failed() {
+	Lobibox.notify('error', {
+		pauseDelayOnHover: true,
+		continueDelayOnInactiveTab: false,
+		position: 'top right',
+		icon: 'bx bx-error',
+		msg: 'Trainer feedback Add Failed..! Try Again..!'
 	});
 }

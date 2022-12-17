@@ -39,6 +39,15 @@
               <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Trainee">
                 <a href="javascript:;" class="nav-link" data-bs-toggle="pill" data-bs-target="#Trainee"><ion-icon name="briefcase-sharp"></ion-icon></a>
               </li>
+              <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="OJT TRACKER">
+                <a href="javascript:;" class="nav-link" data-bs-toggle="pill" data-bs-target="#Ojttracker"><ion-icon name="leaf-sharp"></ion-icon></a>
+              </li>
+              <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="ATTRITION TRACKER">
+                <a href="javascript:;" class="nav-link" data-bs-toggle="pill" data-bs-target="#Attritiontracker"><ion-icon name="newspaper-sharp"></ion-icon></a>
+              </li>
+               <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="TRAINER FEEDBACK">
+                <a href="javascript:;" class="nav-link" data-bs-toggle="pill" data-bs-target="#Trainerfeedback"><ion-icon name="server-sharp"></ion-icon></a>
+              </li>
               <!-- <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="eCommerce">
                 <a href="javascript:;" class="nav-link" data-bs-toggle="pill" data-bs-target="#ecommerce"><ion-icon name="bag-handle-sharp"></ion-icon></a>
               </li>
@@ -112,6 +121,45 @@
                   <small class="mb-0">Some placeholder content</small>
                 </div>
                 <a href="<?php echo base_url();?>AdminController/user_form_table" class="list-group-item d-flex align-items-center"><ion-icon name="print-outline"></ion-icon>Add Trainee</a>
+                <!-- <a href="widgets-data-widgets.html" class="list-group-item d-flex align-items-center"><ion-icon name="pie-chart-outline"></ion-icon>Data Widgets</a> -->
+              </div>
+            </div>
+            <div class="tab-pane fade" id="Ojttracker">
+              <div class="list-group list-group-flush">
+                <div class="list-group-item">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-0">OJT TRACKER</h5>
+                  </div>
+                  <small class="mb-0">Some placeholder content</small>
+                </div>
+                <a href="<?php echo base_url();?>OjtController/ojt_form_add" class="list-group-item d-flex align-items-center"><ion-icon name="print-outline"></ion-icon>OJT TRACKER</a>
+                <a href="<?php echo base_url();?>OjtController/ojt_form_report" class="list-group-item d-flex align-items-center"><ion-icon name="print-outline"></ion-icon>Report OJT TRACKER</a>
+                <!-- <a href="widgets-data-widgets.html" class="list-group-item d-flex align-items-center"><ion-icon name="pie-chart-outline"></ion-icon>Data Widgets</a> -->
+              </div>
+            </div>
+             <div class="tab-pane fade" id="Attritiontracker">
+              <div class="list-group list-group-flush">
+                <div class="list-group-item">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-0">ATTRITION TRACKER</h5>
+                  </div>
+                  <small class="mb-0">Some placeholder content</small>
+                </div>
+                <a href="<?php echo base_url();?>AttritionController/attrition_form_add" class="list-group-item d-flex align-items-center"><ion-icon name="print-outline"></ion-icon>ATTRITION TRACKER</a>
+                <a href="<?php echo base_url();?>AttritionController/attrition_form_report" class="list-group-item d-flex align-items-center"><ion-icon name="print-outline"></ion-icon>Report ATTRITION TRACKER</a>
+                <!-- <a href="widgets-data-widgets.html" class="list-group-item d-flex align-items-center"><ion-icon name="pie-chart-outline"></ion-icon>Data Widgets</a> -->
+              </div>
+            </div>
+            <div class="tab-pane fade" id="Trainerfeedback">
+              <div class="list-group list-group-flush">
+                <div class="list-group-item">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-0">TRAINER FEEDBACK</h5>
+                  </div>
+                  <small class="mb-0">Some placeholder content</small>
+                </div>
+                <a href="<?php echo base_url();?>FeedbackController/feedback_add_form" class="list-group-item d-flex align-items-center"><ion-icon name="print-outline"></ion-icon>TRAINER FEEDBACK</a>
+                <a href="<?php echo base_url();?>FeedbackController/attrition_form_report" class="list-group-item d-flex align-items-center"><ion-icon name="print-outline"></ion-icon>VIEW TRAINER FEEDBACK</a>
                 <!-- <a href="widgets-data-widgets.html" class="list-group-item d-flex align-items-center"><ion-icon name="pie-chart-outline"></ion-icon>Data Widgets</a> -->
               </div>
             </div>

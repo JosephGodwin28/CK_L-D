@@ -1,5 +1,6 @@
 <?php	
-defined('BASEPATH') OR exit('No direct script access allowed');	
+defined('BASEPATH') OR exit('No direct script access allowed');
+use CodeIgniter\Files\File;	
 class EmpController extends CI_Controller {
 	public function __construct()	
     {	
@@ -14,6 +15,7 @@ class EmpController extends CI_Controller {
         $this->load->library('form_validation');	
         $this->load->library('javascript');	
         $this->load->library('email');
+        $this->load->library('upload');
 
         $this->load->model('Emp_model', 'emodel');
         $this->load->model('common_model', 'cmodel');
@@ -270,6 +272,7 @@ class EmpController extends CI_Controller {
         }*/
         
         // echo "<pre>";print_r($where_cond);die;
+        //echo '<pre>';print_r($this->input->post());print_r($_FILES['day_pic']['name']);die;
         $where_cond['training_day'] =$this->input->post('daycount');
         $where_cond['assignedDate'] = $this->input->post('assignedDate');
         $where_cond['batch_code'] = $this->input->post('batch_code');
@@ -300,15 +303,41 @@ class EmpController extends CI_Controller {
         // }else{
         //     $where_cond_1['status'] = 'completed';
         // }
+        
+        $file = $_FILES['day_pic'];
+        $file_name_with_extenstion = $file['name'];
+        $file_name = pathinfo($file_name_with_extenstion, PATHINFO_FILENAME);
+        $extension = pathinfo($file_name_with_extenstion, PATHINFO_EXTENSION);
+        $upload_name = $file_name.time().".$extension";
 
         $a= $this->input->post('batch_code');
         $where_cond_1['batch_code']=$a[0];
         $where_cond_1['day_type'] =$this->input->post('daycount');
+         $where_cond_1['day_pic'] = $upload_name;
         $where_cond_1['createdBy_emp'] = $_SESSION['emp_id'];
         $where_cond_1['emp_code'] = $_SESSION['emp_id'];
         $where_cond_1['assignedDate'] = $this->input->post('assignedDate');
-        $editform_result = $this->cmodel->trainee_report_add('trainee_daily_report',$where_cond);
-        $editform_result = $this->cmodel->trainee_report_add_dup('trainee_dup_record',$where_cond_1);
+      
+
+
+        $config['upload_path'] = './uploads';
+        $config['file_name'] =   $upload_name ;
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] =0;
+        $config['max_width'] = 0;
+        $config['max_height'] = 0;
+        $uploadCondtion=0;
+        $this->upload->initialize($config);
+        if(!$this->upload->do_upload('day_pic')){
+            $invalidfile_errors=$this->upload->display_errors();
+            $editform_result=false;
+            $uploadCondtion=1;
+        }else{
+            $editform_result = $this->cmodel->trainee_report_add('trainee_daily_report',$where_cond);
+            $editform_result = $this->cmodel->trainee_report_add_dup('trainee_dup_record',$where_cond_1);
+            $invalidfile_errors='';
+        }
+
 
         if($editform_result){
             $result = array(
@@ -316,8 +345,13 @@ class EmpController extends CI_Controller {
                 "url" => "EmpController/emp_progress_list"
             );
             echo json_encode($result);
-        }
-        else{
+        }elseif($uploadCondtion==1){
+            $result = array(
+                "response" => "FileValidationFailed",
+                "url" => "EmpController/emp_progress"
+            );
+            echo json_encode($result);
+        }else{
             $result = array(
                 "response" => "failed",
                 "url" => "EmpController/emp_progress"
