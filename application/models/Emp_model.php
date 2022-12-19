@@ -1352,8 +1352,8 @@ class Emp_model extends CI_Model{
 						{
 							$trainee_code=$record->trainee_code."<input id='trainee_code' type='hidden' value='".$record->trainee_code."'>";
 							$name_trainee=$record->name_trainee."<input id='name_trainee' type='hidden' value='".$record->name_trainee."'>";
-							$totalmark="<input class='form-control tm' name='tot_mark[]' id='totalmark' onkeypress='return isNumber(event)' type='text' disabled>";
-							$mark='<input type="text"class="form-control common" id="mark" name="mark[]" onkeypress="return isNumber(event)" disabled></input>';
+							$totalmark="<input class='form-control tm tv' name='tot_mark[]' id='totalmark' onkeypress='return isNumber(event)' type='text' disabled>";
+							$mark='<input type="text"class="form-control common tv" id="mark" name="mark[]" onkeypress="return isNumber(event)" disabled></input>';
 							$percentage='<input type="text"class="form-control" id="percentage" name="percentage[]" onkeypress="return isNumber(event)" readonly></input>';
 							$sts = "<select name='status[]' class='form-control form-select' id='status' disabled >
 										<option value=''>Select</option>
